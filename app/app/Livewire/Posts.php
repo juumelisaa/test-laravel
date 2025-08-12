@@ -14,6 +14,7 @@ class Posts extends Component
     {
         $this->posts = PostsModel::fetchPosts();
         $this->isLoading = false;
+        $this->posts[0]['title'] = 'HEHE';
     }
     public function render()
     {
