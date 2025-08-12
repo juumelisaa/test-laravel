@@ -8,10 +8,12 @@ use App\Models\PostsModel;
 class Posts extends Component
 {
     public $name = "MINGYU";
+    public $isLoading = true;
     public $posts = [];
     public function getPosts ()
     {
-        $this->posts = PostsModel::fetchPosts(); 
+        $this->posts = PostsModel::fetchPosts();
+        $this->isLoading = false;
     }
     public function render()
     {
