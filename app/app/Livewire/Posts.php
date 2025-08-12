@@ -7,7 +7,7 @@ use App\Models\PostsModel;
 
 class Posts extends Component
 {
-    public $name = "MINGYU";
+    public $name = "World";
     public $isLoading = true;
     public $posts = [];
     public function getPosts ()

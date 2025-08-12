@@ -1,4 +1,4 @@
-<div wire:init="getPosts">
+<div wire:init="getPosts" class="bg-yellow-900">
     <p>Hello, {{ $name }}</p>
     @if ($isLoading)
         <p>LOADING</p>
