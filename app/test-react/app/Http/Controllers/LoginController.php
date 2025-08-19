@@ -14,22 +14,10 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|string'
         ]);
-        // dd($data);
-        // return $data;
         $res = Auth::login($data);
-        // return $res;
-        // $posts = [];
-        // foreach ($res as $post) {
-        //     $obj = [
-        //         'id' => $post['id'],
-        //         'title' => $post['title'],
-        //         'body' => $post['body']
-        //     ];
-        //     array_push($posts, $obj);
-        // };
-        return Inertia::render('login', [
-            'success' => true,
+        return Inertia::render('Login', [
+            'apiResult' => $res,
+            'test' => 'test aja'
         ]);
-        
     }
 }

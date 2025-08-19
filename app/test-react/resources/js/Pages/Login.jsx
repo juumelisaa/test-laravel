@@ -1,7 +1,20 @@
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 
-export default function Index() {
-
+export default function Index({apiResult, test}) {
+    const [errorLogin, setErrorLogin] = useState()
+        // const { apiResult, test } = usePage().props;
+        
+        useEffect(() => {
+            if (apiResult) {
+                console.log(apiResult)
+                if (apiResult.success) {
+                    window.location.href = '/'
+                } else {
+                    setErrorLogin(apiResult.message)
+                }
+            }
+        }, [apiResult])
         const { data, setData, post, processing, errors, reset } = useForm({
             email: '',
             password: '',
@@ -11,7 +24,9 @@ export default function Index() {
         const submit = (e) => {
             e.preventDefault();
             post(route('login'), {
-                onFinish: () => console.log('finish'),
+                onFinish: (res) => {
+                    console.log(res)
+                },
                 onError: (err) => console.log(err)
             });
         };
@@ -22,6 +37,7 @@ export default function Index() {
                 <h1 className='font-bold text-lg'>Login</h1>
 
                 <form onSubmit={submit}>
+                    <p className='capitalize text-red-600'>{errorLogin}</p>
                     <div className='flex flex-col'>
                         <label>Email</label>
                         <input

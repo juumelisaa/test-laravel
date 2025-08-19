@@ -16,10 +16,17 @@ class Auth
             // $body = $response->getBody();
             // $data = json_decode($body, true);
             // dd($data);
-            return $data;
+            $token = 'token123';
+            session(['token', $token]);
+            $res = [
+                'success' => true,
+                'message' => 'success login'
+            ];
+            return $res;
         } else {
             $res = [
-                'error' => true
+                'success' => false,
+                'message' => 'invalid credential'
             ];
             return $res;
         }
