@@ -20,8 +20,8 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 COPY app/test-react ./
 
-RUN npm install
-RUN npm run build
+# RUN npm install
+# RUN npm run build
 
 RUN chown -R www-data:www-data /var/www
 
