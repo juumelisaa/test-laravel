@@ -16,11 +16,7 @@ class CheckToken
      */
     public function handle(Request $request, Closure $next)
     {
-        // Example: token from session
-        $isLogin = $request->session()->has('token');
-        // if (!$request->session()->has('token')) {
-        //     return redirect('/'); // redirect to home if no token
-        // }
+        $isLogin = session('token') ? true : false;
         Inertia::share([
             'isLogin' => $isLogin
         ]);
