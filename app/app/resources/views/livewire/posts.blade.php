@@ -6,7 +6,7 @@
     <ul class="grid grid-cols-3 gap-10">
     @foreach($posts as $post)
         <li class="shadow rounded p-5">
-            <p>{{ $post['title'] }}</p>
+            <p class='font-bold capitalize'>{{ $post['title'] }}</p>
             <p>{{ $post['body'] }}</p>
         </li>
     @endforeach
