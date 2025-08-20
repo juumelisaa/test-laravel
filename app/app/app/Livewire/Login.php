@@ -8,9 +8,11 @@ class Login extends Component
 {
     public function mount ()
     {
-        session(['token' => 'hello']);
+    //     session(['token' => 'hello']);
         $token = session('token');
-        return redirect('/posts');
+        if ($token) {
+            return redirect('/posts');
+        };
     }
     public function render()
     {

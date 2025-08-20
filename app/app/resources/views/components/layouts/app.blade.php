@@ -5,9 +5,9 @@
     @livewireStyles
 </head>
 <body>
-    <header>Navbar here</header>
+    <!-- <header>Navbar here</header> -->
 
-    <main>
+    <main class="p-5">
         {{ $slot }}
     </main>
 

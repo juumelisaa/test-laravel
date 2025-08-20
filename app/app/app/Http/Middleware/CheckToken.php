@@ -17,7 +17,7 @@ class CheckToken
     {
         // Example: token from session
         if (!$request->session()->has('token')) {
-            return redirect('/'); // redirect to home if no token
+            return redirect('/login'); // redirect to login page if no token
         }
 
         return $next($request);
