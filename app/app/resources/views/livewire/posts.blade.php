@@ -1,11 +1,14 @@
-<div wire:init="getPosts">
+<div wire:init="getPosts" class='bg-gray-100'>
     <p>Hello, {{ $name }}</p>
     @if ($isLoading)
         <p>LOADING</p>
     @endif
-    <ul class="grid grid-cols-5 bg-[#0a0a0a]">
+    <ul class="grid grid-cols-3 gap-10">
     @foreach($posts as $post)
-        <li class="text-[#dd292f] ">{{ $post['title'] }}</li>
+        <li class="shadow rounded p-5">
+            <p>{{ $post['title'] }}</p>
+            <p>{{ $post['body'] }}</p>
+        </li>
     @endforeach
     </ul>
 </div>

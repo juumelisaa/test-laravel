@@ -21,7 +21,6 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 COPY app/app ./
 
 RUN npm install
-RUN rm -rf public/build
 RUN npm run build
 
 RUN chown -R www-data:www-data /var/www
