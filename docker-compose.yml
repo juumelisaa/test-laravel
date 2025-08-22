@@ -4,7 +4,8 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker/php/Dockerfile
+      dockerfile: Dockerfile
+      target: development
     container_name: laravel-react
     working_dir: /var/www
     volumes:
@@ -13,22 +14,6 @@ services:
       - "8000:8000"
     networks:
       - laravel
-
-  # mysql:
-  #   image: mysql:8.0
-  #   container_name: laravel-mysql
-  #   restart: always
-  #   environment:
-  #     MYSQL_DATABASE: laravel
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_PASSWORD: root
-  #     MYSQL_USER: laravel
-  #   ports:
-  #     - "3306:3306"
-  #   volumes:
-  #     - dbdata:/var/lib/mysql
-  #   networks:
-  #     - laravel
 
   nginx:
     image: nginx:alpine

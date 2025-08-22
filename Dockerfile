@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.3-fpm AS base
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -14,13 +14,19 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
+# DEVELOPMENT STAGE
+FROM base AS development
+RUN chown -R www-data:www-data /var/www
+
+# PRODUCTION STAGE
+FROM base AS production
 COPY app/test-react/composer.json app/test-react/composer.lock ./
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 COPY app/test-react ./
 
-RUN npm ci
+RUN npm i
 RUN npm run build
 
 RUN chown -R www-data:www-data /var/www
